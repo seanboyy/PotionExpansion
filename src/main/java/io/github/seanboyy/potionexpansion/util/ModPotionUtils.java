@@ -1,4 +1,4 @@
-package io.github.seanboyy.potionexpansion.utils;
+package io.github.seanboyy.potionexpansion.util;
 
 import com.google.common.collect.Lists;
 import net.minecraft.entity.ai.attributes.AttributeModifier;

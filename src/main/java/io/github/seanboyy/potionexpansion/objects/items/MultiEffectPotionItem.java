@@ -1,6 +1,6 @@
 package io.github.seanboyy.potionexpansion.objects.items;
 
-import io.github.seanboyy.potionexpansion.utils.ModPotionUtils;
+import io.github.seanboyy.potionexpansion.util.ModPotionUtils;
 import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.client.util.ITooltipFlag;
