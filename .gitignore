@@ -21,6 +21,7 @@ gradle
 gradlew.bat
 gradlew
 gradle.properties
+libs
 
 # other
 eclipse

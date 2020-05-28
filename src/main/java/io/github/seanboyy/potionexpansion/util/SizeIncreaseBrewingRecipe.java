@@ -7,6 +7,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.PotionItem;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionUtils;
 import net.minecraftforge.common.brewing.IBrewingRecipe;
@@ -30,18 +31,29 @@ public class SizeIncreaseBrewingRecipe implements IBrewingRecipe {
     @Override
     public ItemStack getOutput(ItemStack input, ItemStack ingredient) {
         if(!input.isEmpty() && !ingredient.isEmpty() && isIngredient(ingredient)) {
+            CompoundNBT newTag = input.getTag();
+            ItemStack newStack;
             if(input.getItem() instanceof MultiUsePotionItem) {
                 MultiUsePotionItem currentSize = ((MultiUsePotionItem) input.getItem());
                 Potion potionOnStack = PotionUtils.getPotionFromItem(input);
                 switch(currentSize.getUses()){
                     case 2:
-                        return PotionUtils.addPotionToItemStack(new ItemStack(ModItems.MULTI_USE_POTION_3.get()), potionOnStack);
+                        newStack = new ItemStack(ModItems.MULTI_USE_POTION_3.get());
+                        newStack.setTag(newTag);
+                        return newStack;
+                        //return PotionUtils.addPotionToItemStack(new ItemStack(ModItems.MULTI_USE_POTION_3.get()), potionOnStack);
                     case 3:
-                        return PotionUtils.addPotionToItemStack(new ItemStack(ModItems.MULTI_USE_POTION_4.get()), potionOnStack);
+                        newStack = new ItemStack(ModItems.MULTI_USE_POTION_4.get());
+                        newStack.setTag(newTag);
+                        return newStack;
+                        //return PotionUtils.addPotionToItemStack(new ItemStack(ModItems.MULTI_USE_POTION_4.get()), potionOnStack);
                 }
             } else if(input.getItem() instanceof PotionItem) {
-                Potion potionOnStack = PotionUtils.getPotionFromItem(input);
-                return PotionUtils.addPotionToItemStack(new ItemStack(ModItems.MULTI_USE_POTION_2.get()), potionOnStack);
+                newStack = new ItemStack(ModItems.MULTI_USE_POTION_2.get());
+                newStack.setTag(newTag);
+                return newStack;
+                //Potion potionOnStack = PotionUtils.getPotionFromItem(input);
+                //return PotionUtils.addPotionToItemStack(new ItemStack(ModItems.MULTI_USE_POTION_2.get()), potionOnStack);
             }
         }
         return ItemStack.EMPTY;

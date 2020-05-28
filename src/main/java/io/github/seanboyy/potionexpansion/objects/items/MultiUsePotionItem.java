@@ -78,7 +78,8 @@ public class MultiUsePotionItem extends PotionItem {
         ResourceLocation potionId = new ResourceLocation(stack.serializeNBT().getCompound("tag").getString("Potion"));
         Potion tempPotion = ForgeRegistries.POTION_TYPES.getValue(potionId);
         ResourceLocation dummyLocation = tempPotion.baseName != null ? new ResourceLocation(potionId.getNamespace(), tempPotion.baseName) : potionId;
-        return "item." + dummyLocation.getNamespace() + ".potion.effect." + dummyLocation.getPath();
+        if(dummyLocation.getPath().equals("")) return "item.minecraft.potion.effect.empty";
+        return "item.minecraft.potion.effect." + dummyLocation.getPath();
     }
 
     @Override
