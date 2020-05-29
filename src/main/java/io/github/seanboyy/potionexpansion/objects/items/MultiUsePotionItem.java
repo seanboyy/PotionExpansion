@@ -51,7 +51,7 @@ public class MultiUsePotionItem extends PotionItem {
             if(!playerEntity.abilities.isCreativeMode) stack.shrink(1);
         }
         if(playerEntity == null || !playerEntity.abilities.isCreativeMode) {
-            CompoundNBT newTag = stack.serializeNBT().getCompound("tag");
+            CompoundNBT newTag = stack.getTag();
             ItemStack newStack;
             if(stack.isEmpty()) {
                 switch(uses) {

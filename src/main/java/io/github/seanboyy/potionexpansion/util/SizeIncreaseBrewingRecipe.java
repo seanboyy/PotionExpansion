@@ -35,25 +35,20 @@ public class SizeIncreaseBrewingRecipe implements IBrewingRecipe {
             ItemStack newStack;
             if(input.getItem() instanceof MultiUsePotionItem) {
                 MultiUsePotionItem currentSize = ((MultiUsePotionItem) input.getItem());
-                Potion potionOnStack = PotionUtils.getPotionFromItem(input);
                 switch(currentSize.getUses()){
                     case 2:
                         newStack = new ItemStack(ModItems.MULTI_USE_POTION_3.get());
                         newStack.setTag(newTag);
                         return newStack;
-                        //return PotionUtils.addPotionToItemStack(new ItemStack(ModItems.MULTI_USE_POTION_3.get()), potionOnStack);
                     case 3:
                         newStack = new ItemStack(ModItems.MULTI_USE_POTION_4.get());
                         newStack.setTag(newTag);
                         return newStack;
-                        //return PotionUtils.addPotionToItemStack(new ItemStack(ModItems.MULTI_USE_POTION_4.get()), potionOnStack);
                 }
             } else if(input.getItem() instanceof PotionItem) {
                 newStack = new ItemStack(ModItems.MULTI_USE_POTION_2.get());
                 newStack.setTag(newTag);
                 return newStack;
-                //Potion potionOnStack = PotionUtils.getPotionFromItem(input);
-                //return PotionUtils.addPotionToItemStack(new ItemStack(ModItems.MULTI_USE_POTION_2.get()), potionOnStack);
             }
         }
         return ItemStack.EMPTY;

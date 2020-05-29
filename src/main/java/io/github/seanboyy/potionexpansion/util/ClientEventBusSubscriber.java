@@ -1,21 +1,24 @@
 package io.github.seanboyy.potionexpansion.util;
 
 import io.github.seanboyy.potionexpansion.PotionExpansion;
+import io.github.seanboyy.potionexpansion.client.gui.ModBrewingStandScreen;
+import io.github.seanboyy.potionexpansion.registers.ModContainers;
 import io.github.seanboyy.potionexpansion.registers.ModItems;
 import net.minecraft.client.Minecraft;
-import net.minecraft.item.Item;
+import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.potion.PotionUtils;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 
 @Mod.EventBusSubscriber(modid = PotionExpansion.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ClientEventBusSubscriber {
 
     @SubscribeEvent
-    public static void onRegisterItems(final RegistryEvent.Register<Item> event){
+    public static void onClientSetup(final FMLClientSetupEvent event) {
+        ScreenManager.registerFactory(ModContainers.BREWING_STAND_CONTAINER.get(), ModBrewingStandScreen::new);
     }
 
     @SubscribeEvent
