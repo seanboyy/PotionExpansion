@@ -5,6 +5,7 @@ import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BrewingStandBlock;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.stats.Stats;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ActionResultType;
@@ -39,5 +40,16 @@ public class ModBrewingStandBlock extends BrewingStandBlock {
             }
         }
         return ActionResultType.SUCCESS;
+    }
+
+    @Override
+    public void onReplaced(BlockState state, World worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
+        if(state.getBlock() != newState.getBlock()) {
+            TileEntity tileEntity = worldIn.getTileEntity(pos);
+            if(tileEntity instanceof ModBrewingStandTileEntity) {
+                InventoryHelper.dropInventoryItems(worldIn, pos, (ModBrewingStandTileEntity)tileEntity);
+            }
+            super.onReplaced(state, worldIn, pos, newState, isMoving);
+        }
     }
 }

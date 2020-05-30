@@ -8,6 +8,7 @@ import io.github.seanboyy.potionexpansion.util.ModBrewingRecipeRegistry;
 import io.github.seanboyy.potionexpansion.util.MultiEffectBrewingRecipe;
 import io.github.seanboyy.potionexpansion.util.SizeIncreaseBrewingRecipe;
 import io.github.seanboyy.potionexpansion.util.VanillaBrewingRecipe;
+import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -60,6 +61,12 @@ public class PotionExpansion {
             blockItem.setRegistryName(block.getRegistryName());
             registry.register(blockItem);
         });
+    }
+
+    @SubscribeEvent(priority = EventPriority.LOWEST)
+    public static void onRegisterBlocks(final RegistryEvent.Register<Block> event) {
+	    final IForgeRegistry<Block> registry = event.getRegistry();
+        ModBlocks.OVERRIDE_BLOCKS.getEntries().stream().map(RegistryObject::get).forEach(registry::register);
     }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)

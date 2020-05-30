@@ -41,7 +41,7 @@ import java.util.Arrays;
 @ParametersAreNonnullByDefault
 public class ModBrewingStandTileEntity extends LockableTileEntity implements ISidedInventory, ITickableTileEntity {
     private static final int[] SLOTS_FOR_UP = new int[]{3};
-    private static final int[] SLOTS_FOR_DOWN = new int[]{0, 1, 2, 4};
+    private static final int[] SLOTS_FOR_DOWN = new int[]{0, 1, 2, 3};
     private static final int[] OUTPUT_SLOTS = new int[]{0, 1, 2, 4};
     private NonNullList<ItemStack> brewingItemStacks = NonNullList.withSize(5, ItemStack.EMPTY);
     private int brewTime;

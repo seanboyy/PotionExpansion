@@ -1,3 +1,20 @@
 {
-
+  "variants": {
+    "facing=north,has_bottle_0=false,has_bottle_1=false": {"model": "potionexpansion:block/potion_mixer_none"},
+    "facing=north,has_bottle_0=true,has_bottle_1=false":  {"model": "potionexpansion:block/potion_mixer_0"},
+    "facing=north,has_bottle_0=false,has_bottle_1=true":  {"model": "potionexpansion:block/potion_mixer_1"},
+    "facing=north,has_bottle_0=true,has_bottle_1=true":   {"model": "potionexpansion:block/potion_mixer_both"},
+    "facing=west,has_bottle_0=false,has_bottle_1=false":  {"model": "potionexpansion:block/potion_mixer_none","y": 270},
+    "facing=west,has_bottle_0=true,has_bottle_1=false":   {"model": "potionexpansion:block/potion_mixer_0","y": 270},
+    "facing=west,has_bottle_0=false,has_bottle_1=true":   {"model": "potionexpansion:block/potion_mixer_1","y": 270},
+    "facing=west,has_bottle_0=true,has_bottle_1=true":    {"model": "potionexpansion:block/potion_mixer_both","y": 270},
+    "facing=south,has_bottle_0=false,has_bottle_1=false": {"model": "potionexpansion:block/potion_mixer_none","y": 180},
+    "facing=south,has_bottle_0=true,has_bottle_1=false":  {"model": "potionexpansion:block/potion_mixer_0","y": 180},
+    "facing=south,has_bottle_0=false,has_bottle_1=true":  {"model": "potionexpansion:block/potion_mixer_1","y": 180},
+    "facing=south,has_bottle_0=true,has_bottle_1=true":   {"model": "potionexpansion:block/potion_mixer_both","y": 180},
+    "facing=east,has_bottle_0=false,has_bottle_1=false":  {"model": "potionexpansion:block/potion_mixer_none","y": 90},
+    "facing=east,has_bottle_0=true,has_bottle_1=false":   {"model": "potionexpansion:block/potion_mixer_0","y": 90},
+    "facing=east,has_bottle_0=false,has_bottle_1=true":   {"model": "potionexpansion:block/potion_mixer_1","y": 90},
+    "facing=east,has_bottle_0=true,has_bottle_1=true":    {"model": "potionexpansion:block/potion_mixer_both","y": 90}
+  }
 }

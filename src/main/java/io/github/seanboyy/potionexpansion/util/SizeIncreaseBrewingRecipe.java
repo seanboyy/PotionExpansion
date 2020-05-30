@@ -10,6 +10,7 @@ import net.minecraft.item.PotionItem;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionUtils;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.common.brewing.IBrewingRecipe;
 
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -39,15 +40,18 @@ public class SizeIncreaseBrewingRecipe implements IBrewingRecipe {
                     case 2:
                         newStack = new ItemStack(ModItems.MULTI_USE_POTION_3.get());
                         newStack.setTag(newTag);
+                        newStack.setDisplayName(new TranslationTextComponent("potionexpansion.large").appendText(" ").appendSibling(input.getDisplayName()));
                         return newStack;
                     case 3:
                         newStack = new ItemStack(ModItems.MULTI_USE_POTION_4.get());
                         newStack.setTag(newTag);
+                        newStack.setDisplayName(new TranslationTextComponent("potionexpansion.large").appendText(" ").appendSibling(input.getDisplayName()));
                         return newStack;
                 }
             } else if(input.getItem() instanceof PotionItem) {
                 newStack = new ItemStack(ModItems.MULTI_USE_POTION_2.get());
                 newStack.setTag(newTag);
+                newStack.setDisplayName(new TranslationTextComponent("potionexpansion.large").appendText(" ").appendSibling(input.getDisplayName()));
                 return newStack;
             }
         }

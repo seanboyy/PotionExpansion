@@ -12,6 +12,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class ModContainers {
     public static final DeferredRegister<ContainerType<?>> CONTAINERS = new DeferredRegister<>(ForgeRegistries.CONTAINERS, PotionExpansion.MOD_ID);
 
-    public static final RegistryObject<ContainerType<PotionMixerContainer>> MIXER_CONTAINER = CONTAINERS.register("potion_mixer", () -> IForgeContainerType.create(PotionMixerContainer::new));
+    public static final RegistryObject<ContainerType<PotionMixerContainer>> POTION_MIXER_CONTAINER = CONTAINERS.register("potion_mixer", () -> IForgeContainerType.create(PotionMixerContainer::new));
     public static final RegistryObject<ContainerType<ModBrewingStandContainer>> BREWING_STAND_CONTAINER = CONTAINERS.register("brewing_stand", () -> IForgeContainerType.create(ModBrewingStandContainer::new));
 }

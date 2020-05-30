@@ -2,20 +2,14 @@ package io.github.seanboyy.potionexpansion.util;
 
 import com.google.common.collect.Lists;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.NonNullList;
-import net.minecraftforge.common.brewing.BrewingRecipe;
 import net.minecraftforge.common.brewing.IBrewingRecipe;
 
 import java.util.Collections;
 import java.util.List;
 
 public class ModBrewingRecipeRegistry {
-    private static List<IBrewingRecipe> recipes = Lists.newArrayList();
-
-    public static boolean addRecipe(Ingredient input, Ingredient ingredient, ItemStack output) {
-        return addRecipe(new BrewingRecipe(input, ingredient, output));
-    }
+    private static final List<IBrewingRecipe> recipes = Lists.newArrayList();
 
     public static boolean addRecipe(IBrewingRecipe recipe) {
         return recipes.add(recipe);

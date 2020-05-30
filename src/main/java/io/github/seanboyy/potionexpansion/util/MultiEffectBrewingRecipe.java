@@ -5,6 +5,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.common.brewing.IBrewingRecipe;
 import net.minecraftforge.common.util.Constants;
 
@@ -37,12 +38,14 @@ public class MultiEffectBrewingRecipe implements IBrewingRecipe {
                 if (input.getItem() == Items.POTION) {
                     newStack = new ItemStack(Items.SPLASH_POTION);
                     newStack.setTag(newTag);
+                    newStack.setDisplayName(new TranslationTextComponent("potionexpansion.splash").appendText(" ").appendSibling(input.getDisplayName()));
                     return newStack;
                 }
             } else if (ingredientItem == Items.DRAGON_BREATH) {
                 if (input.getItem() == Items.SPLASH_POTION) {
                     newStack = new ItemStack(Items.LINGERING_POTION);
                     newStack.setTag(newTag);
+                    newStack.setDisplayName(new TranslationTextComponent("potionexpansion.lingering").appendText(" ").appendSibling(input.getDisplayName()));
                     return newStack;
                 }
             }
