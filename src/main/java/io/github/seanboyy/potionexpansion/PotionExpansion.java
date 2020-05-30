@@ -1,9 +1,6 @@
 package io.github.seanboyy.potionexpansion;
 
-import io.github.seanboyy.potionexpansion.registers.ModBlocks;
-import io.github.seanboyy.potionexpansion.registers.ModContainers;
-import io.github.seanboyy.potionexpansion.registers.ModItems;
-import io.github.seanboyy.potionexpansion.registers.ModTileEntities;
+import io.github.seanboyy.potionexpansion.registers.*;
 import io.github.seanboyy.potionexpansion.util.ModBrewingRecipeRegistry;
 import io.github.seanboyy.potionexpansion.util.MultiEffectBrewingRecipe;
 import io.github.seanboyy.potionexpansion.util.SizeIncreaseBrewingRecipe;
@@ -38,6 +35,7 @@ public class PotionExpansion {
 	public PotionExpansion() {
 	    LOGGER.info("Starting up Potion Expansion");
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        ModPotions.POTIONS.register(modEventBus);
         ModItems.ITEMS.register(modEventBus);
         ModBlocks.BLOCKS.register(modEventBus);
         ModBlocks.OVERRIDE_BLOCKS.register(modEventBus);

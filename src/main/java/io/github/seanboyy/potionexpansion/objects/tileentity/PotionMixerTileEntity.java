@@ -3,6 +3,7 @@ package io.github.seanboyy.potionexpansion.objects.tileentity;
 import io.github.seanboyy.potionexpansion.PotionExpansion;
 import io.github.seanboyy.potionexpansion.objects.blocks.PotionMixerBlock;
 import io.github.seanboyy.potionexpansion.objects.containers.inventory.PotionMixerContainer;
+import io.github.seanboyy.potionexpansion.registers.ModPotions;
 import io.github.seanboyy.potionexpansion.registers.ModTileEntities;
 import io.github.seanboyy.potionexpansion.util.ModPotionUtils;
 import mcp.MethodsReturnNonnullByDefault;
@@ -215,7 +216,7 @@ public class PotionMixerTileEntity extends LockableTileEntity implements ISidedI
     }
 
     private boolean canMix() {
-        for(int i = 1; i < 2; ++i) {
+        for(int i = 1; i < 3; ++i) {
             ItemStack itemStack1 = this.mixingItemStacks.get(i);
             if(itemStack1.isEmpty() || !ModPotionUtils.itemHasPotionEffect(itemStack1)) return false;
         }
@@ -234,15 +235,15 @@ public class PotionMixerTileEntity extends LockableTileEntity implements ISidedI
         if(mix2.getTag() == null) return;
         CompoundNBT mix1Tag = mix1.getTag();
         CompoundNBT mix2Tag = mix2.getTag();
-        ItemStack output = new ItemStack(Items.GLASS_BOTTLE);
-        PotionUtils.addPotionToItemStack(output, Potions.WATER).setDisplayName(new TranslationTextComponent(PotionExpansion.MOD_ID + ".items.multi_effect"));
+        ItemStack output = new ItemStack(Items.POTION);
+        PotionUtils.addPotionToItemStack(output, ModPotions.MULTI_EFFECT.get());
         CompoundNBT appendedTag = output.getTag();
         assert appendedTag != null;
         appendedTag.put("CustomPotionEffects", ModPotionUtils.createAndMergeCustomPotionEffects(mix1Tag, mix2Tag));
         output.setTag(appendedTag);
         BlockPos blockPos = this.getPos();
-        this.mixingItemStacks.set(1, ItemStack.EMPTY);
-        this.mixingItemStacks.set(2, ItemStack.EMPTY);
+        this.mixingItemStacks.set(1, new ItemStack(Items.GLASS_BOTTLE));
+        this.mixingItemStacks.set(2, new ItemStack(Items.GLASS_BOTTLE));
         this.mixingItemStacks.set(4, output);
         assert this.world != null;
         this.world.playEvent(Constants.WorldEvents.BREWING_STAND_BREW_SOUND, blockPos, 0);
@@ -250,7 +251,7 @@ public class PotionMixerTileEntity extends LockableTileEntity implements ISidedI
 
     public boolean[] createFilledSlotsArray() {
         boolean[] booleans = new boolean[2];
-        for(int i = 1; i < 2; ++i) {
+        for(int i = 1; i < 3; ++i) {
             if(!this.mixingItemStacks.get(i).isEmpty()) {
                 booleans[i - 1] = true;
             }

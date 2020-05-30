@@ -34,7 +34,6 @@ public class ModPotionUtils {
                 || !potion.getEffects().isEmpty();
     }
 
-    //TODO: test this
     public static ListNBT createAndMergeCustomPotionEffects(CompoundNBT compound1, CompoundNBT compound2) {
         List<EffectInstance> effects = Lists.newArrayList();
         //grab effects from input 1

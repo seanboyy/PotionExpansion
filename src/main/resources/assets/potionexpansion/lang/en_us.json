@@ -1,11 +1,11 @@
 {
   "potionexpansion.large": "Large",
-  "potionexpansion.splash": "Splash",
-  "potionexpansion.lingering": "Lingering",
 
   "potionexpansion.container.potion_mixer": "Mix Potions",
 
   "block.potionexpansion.potion_mixer": "Potion Mixer",
 
-  "potionexpansion.items.multi_effect": "Potion of Variety"
+  "item.minecraft.potion.effect.multi_effect": "Potion of Variety",
+  "item.minecraft.splash_potion.effect.multi_effect": "Splash Potion of Variety",
+  "item.minecraft.lingering_potion.effect.multi_effect": "Lingering Potion of Variety"
 }
