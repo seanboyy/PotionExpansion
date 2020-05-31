@@ -220,6 +220,8 @@ public class PotionMixerTileEntity extends LockableTileEntity implements ISidedI
             ItemStack itemStack1 = this.mixingItemStacks.get(i);
             if(itemStack1.isEmpty() || !ModPotionUtils.itemHasPotionEffect(itemStack1)) return false;
         }
+        ItemStack itemStack2 = this.mixingItemStacks.get(4);
+        if(!itemStack2.isEmpty() || itemStack2.getCount() > 0) return false;
         ItemStack itemStack = this.mixingItemStacks.get(3);
         if(itemStack.isEmpty() || itemStack.getCount() < 1) return false;
         else if(itemStack.getItem() == Items.GLASS_BOTTLE) return true;

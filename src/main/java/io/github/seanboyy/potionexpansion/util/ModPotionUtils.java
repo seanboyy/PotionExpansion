@@ -10,6 +10,7 @@ import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.commons.lang3.tuple.Pair;
@@ -74,11 +75,28 @@ public class ModPotionUtils {
             else {
                 int oldDuration = uniqueEffectsInList.get(effect1).getLeft();
                 int oldLevel = uniqueEffectsInList.get(effect1).getRight();
-                if(level != oldLevel || duration != oldDuration) {
-                    EffectInstance oldInstance = new EffectInstance(effect1, oldDuration, oldLevel);
-                    EffectInstance newInstance = new EffectInstance(effect1, duration, level);
-                    newInstance.combine(oldInstance);
-                    uniqueEffectsInList.put(effect1, Pair.of(newInstance.getDuration(), newInstance.getAmplifier()));
+                if(level != oldLevel && duration != oldDuration) {
+                    int newLevel = Math.max(level, oldLevel);
+                    int tempLevel = level + 1;
+                    int tempOldLevel = oldLevel + 1;
+                    int newDuration = (oldDuration * tempOldLevel) + (duration * tempLevel);
+                    newDuration /= (tempLevel + tempOldLevel);
+                    newDuration = MathHelper.clamp(newDuration, 0, 12000);
+                    uniqueEffectsInList.put(effect1, Pair.of(newDuration, newLevel));
+                } else if(level != oldLevel) {
+                    int tempLevel = level + 1;
+                    int tempOldLevel = oldLevel + 1;
+                    int newDuration = (oldDuration * tempLevel) + (duration * tempOldLevel);
+                    newDuration /= Math.max(level, oldLevel) + 1;
+                    newDuration = MathHelper.clamp(newDuration, 0, 12000);
+                    uniqueEffectsInList.put(effect1, Pair.of(newDuration, Math.max(level, oldLevel)));
+                } else if(duration != oldDuration) {
+                    int newLevel = MathHelper.clamp(level + 1, 1, 9);
+                    int newDuration = MathHelper.clamp((duration + oldDuration) / 2, 0, 12000);
+                    uniqueEffectsInList.put(effect1, Pair.of(newDuration, newLevel));
+                }
+                else {
+                    uniqueEffectsInList.put(effect1, Pair.of(duration, MathHelper.clamp(level + 1, 0, 9)));
                 }
             }
         }
