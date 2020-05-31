@@ -93,6 +93,7 @@ public class PotionMixerContainer extends Container {
                 else if(ModPotionUtils.itemHasPotionEffect(itemStack)) {
                     if(!this.mergeItemStack(itemStack1, 1, 3, false)) return ItemStack.EMPTY;
                 }
+                else return ItemStack.EMPTY;
             }
         }
         return itemStack;
